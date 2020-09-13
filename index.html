@@ -37,10 +37,10 @@
     </section>
     <section class="row controls" v-else>
         <div class="small-12 columns">
-            <button id="hadouken">Hadouken!</button>
-            <button id="shoryuken">Shoryuken</button>
-            <button id="tatsumaki-senpukyaku">Tatsumaki-Senpukyaku</button>
-            <button id="give-up">GIVE UP</button>
+            <button id="hadouken" @click="hadouken">Hadouken!</button>
+            <button id="shoryuken" @click="shoryuken">Shoryuken</button>
+            <button id="tatsumaki-senpukyaku" @click="tatsumaki_senpukyaku">Tatsumaki-Senpukyaku</button>
+            <button id="give-up" @click="give_up">GIVE UP</button>
         </div>
     </section>
     <section class="row log">

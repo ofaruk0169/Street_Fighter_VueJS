@@ -12,26 +12,13 @@ new Vue({
             this.kenHealth = 100;
         },
         hadouken: function() {
-            var max = 10;
-            var min = 3;
-            var damage = Math.max(Math.floor(Math.random() * max) + 1, min)
-            this.kenHealth -= damage;
+            this.kenHealth -= this.calculateDamage(3,10);
 
-            if (this.kenHealth <= 0) {
-                alert('You Won!');
-                this.gameIsRunning = false;
+            if (this.checkWin()) {
                 return;
             }
-
-            max = 12;
-            min = 5;
-            var damage = Math.max(Math.floor(Math.random() * max) + 1, min)
-            this.ryuHealth -= damage;
-
-            if (this.ryuHealth <= 0) {
-                alert('You Lost!');
-                this.gameIsRunning = false;
-            }
+            this.ryuHealth -= this.calculateDamage(5, 12);
+            this.checkWin();
         },
         shoryuken: function() {
 
@@ -41,6 +28,27 @@ new Vue({
         },
         give_up: function() {
 
+        },
+        calculateDamage: function(min, max) {
+            return Math.max(Math.floor(Math.random() * max) + 1, min);
+        },
+        checkWin: function() {
+            if (this.kenHealth <= 0) {
+                if (confirm('You won! New game?')) {
+                    this.startGame();
+                } else {
+                    this.gameIsRunning = false;
+                }
+                return true;
+            } else if (this.ryuHealth <= 0) {
+                if (confirm('You lost! New game?')) {
+                    this.startGame();
+                } else {
+                    this.gameIsRunning = false;
+                }
+                return true;
+            }
+            return false;
         }
     }
 });

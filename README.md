@@ -1,1 +1,10 @@
-# vue_monster_game
+# Street Fighter Vue
+
+# Project setup
+npm install
+# Compiles and hot-reloads for development
+npm run serve
+
+# Screenshot
+
+
